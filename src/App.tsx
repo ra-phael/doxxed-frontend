@@ -1,27 +1,20 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useAddress, useSigner } from "@thirdweb-dev/react";
 import "./App.css";
 import FAQ from "./components/FAQ";
-import { WalletConnection } from "./components/WalletConnection";
+import { Header } from "./components/Header";
+import { useSiwe } from "./services/siwe";
 
 function App() {
+  const signer = useSigner();
+  const address = useAddress();
+  const { signIn } = useSiwe();
   return (
     <>
-      <div className="flex justify-center">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <WalletConnection />
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <h1>Placeholder</h1>
+      {signer && address && (
+        <button onClick={() => signIn(address)}>sign</button>
+      )}
       <FAQ />
     </>
   );

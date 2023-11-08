@@ -1,0 +1,3 @@
+mutation VerifySiwe($message: String, $nonce: String) {
+  verifySiwe(message: $message, nonce: $nonce)
+}

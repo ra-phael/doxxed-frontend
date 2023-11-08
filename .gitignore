@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+gql
 
 # Editor directories and files
 .vscode/*
