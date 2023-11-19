@@ -1,3 +1,0 @@
-query getSiweNonce {
-  getSiweNonce
-}

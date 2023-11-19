@@ -7,13 +7,16 @@ import { useSiwe } from "./services/siwe";
 function App() {
   const signer = useSigner();
   const address = useAddress();
-  const { signIn } = useSiwe();
+  const { signIn, isSignedIn } = useSiwe();
   return (
     <>
       <Header />
       <h1>Placeholder</h1>
-      {signer && address && (
-        <button onClick={() => signIn(address)}>sign</button>
+      {isSignedIn ? (
+        <div>You have successfully signed in!</div>
+      ) : (
+        signer &&
+        address && <button onClick={() => signIn(address)}>sign</button>
       )}
       <FAQ />
     </>
