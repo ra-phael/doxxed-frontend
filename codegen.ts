@@ -1,7 +1,5 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 
-console.log("first", process.env.GRAPHQL_API_URL);
-
 const config: CodegenConfig = {
   schema: process.env.GRAPHQL_API_URL,
   documents: ["src/graphql/**/*.graphql"],
