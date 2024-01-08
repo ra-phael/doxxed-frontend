@@ -30,7 +30,9 @@ jobs:
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{ secrets.ECR_REPO }}
-          IMAGE_TAG: ${{ github.sha }}
+          GIT_BRANCH: ${{ github.ref }}
+          GIT_SHA: ${{ github.sha }}
         run: |
+          IMAGE_TAG="${GIT_BRANCH##*/}-${GIT_SHA:0:7}-$(date +%s)"
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
